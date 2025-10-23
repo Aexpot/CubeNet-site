@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Page</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reliable Hosting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&family=Neue+Machina:wght@400;500&family=Montserrat:wght@400;500&family=Onest:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <style id="sections-styles">
+/* CSS for section section:header */
+.site-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border-light);
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+  z-index: 100;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header-logo img {
+  height: 49px;
+  opacity: 0.85;
+}
+.header-nav ul {
+  display: flex;
+  gap: 48px;
+}
+.header-nav a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-inactive);
+  transition: color 0.3s;
+}
+.header-nav a:hover, .header-nav li:first-child a {
+  color: var(--color-text-primary);
+}
+.header-nav a img {
+  opacity: 0.5;
+}
+.header-nav li:first-child a img {
+    opacity: 1;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.lang-selector {
+  background-color: rgba(23, 23, 23, 0.5);
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lang-selector img {
+  width: 20px;
+  height: 20px;
+}
+.btn-personal-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: rgba(125, 80, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-accent);
+  transition: background-color 0.3s;
+}
+.btn-personal-area:hover {
+  background-color: rgba(125, 80, 255, 0.2);
+}
+@media (max-width: 1024px) {
+  .header-nav {
+    display: none; /* Simple responsive solution: hide nav on smaller screens */
+  }
+}
+
+/* CSS for section section:hero */
+.hero-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+.hero-background-blurs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-blur-1 {
+  position: absolute;
+  left: -20%;
+  top: 0;
+  width: 63%;
+  opacity: 0.99;
+  filter: blur(300px);
+}
+.bg-blur-2 {
+  position: absolute;
+  right: -15%;
+  top: -50%;
+  width: 63%;
+  opacity: 0.99;
+  filter: blur(300px);
+}
+.hero-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-content {
+  flex: 1;
+  max-width: 634px;
+}
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.hero-subtitle {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(78, 78, 78, 0.5);
+  margin-bottom: 40px;
+}
+.btn-cta {
+  position: relative;
+  display: inline-block;
+  padding: 1px;
+  border-radius: 20px;
+  background-color: rgba(12, 12, 12, 0.7);
+}
+.btn-cta-background {
+  display: block;
+  width: 202px;
+  height: 35px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #000000 0%, #0e0a16 48.08%, #220065 100%);
+}
+.btn-cta-content {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+.btn-cta-content img {
+  width: 26px;
+  height: 26px;
+}
+.hero-image {
+  flex-shrink: 0;
+}
+.hero-image img {
+  width: 100%;
+  max-width: 612px;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-content {
+    order: 2;
+  }
+  .hero-image {
+    order: 1;
+    margin-bottom: 40px;
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-subtitle {
+    font-size: 20px;
+  }
+}
+
+/* CSS for section section:features */
+.features-section {
+  padding: 100px 0;
+}
+.features-title {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 80px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.feature-card {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 25px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.feature-card-title {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+.feature-card-description {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--color-text-tertiary);
+}
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-title {
+    font-size: 48px;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CSS for section section:configurator */
+.configurator-section {
+  position: relative;
+  padding: 150px 0;
+  overflow: hidden;
+}
+.configurator-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-blur-3 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 63%;
+  opacity: 0.99;
+  filter: blur(300px);
+}
+.configurator-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.config-group {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 16px 32px;
+  display: flex;
+  gap: 16px;
+}
+.config-btn {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px 28px;
+  font-family: var(--font-special);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: background-color 0.3s;
+}
+.config-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.config-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.config-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* CSS for section section:footer */
+.site-footer {
+  padding: 30px 0;
+  border-top: 1px solid var(--color-border-light);
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.footer-info {
+  max-width: 692px;
+}
+.footer-copyright {
+  font-family: var(--font-special);
+  font-size: 20px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+.footer-disclaimer {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+.footer-links {
+  display: flex;
+  gap: 60px;
+}
+.footer-links-column {
+  display: flex;
+  flex-direction: column;
+}
+.footer-links-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-links-title img {
+  width: 21px;
+  height: 21px;
+}
+.footer-links-column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links-column a {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  transition: color 0.3s;
+}
+.footer-links-column a:hover {
+  color: var(--color-text-primary);
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 480px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+  </style>
+  <script src="global.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <a href="#hero" class="header-logo">
+      <img src="images/a80dda3f8d91d2808236dc9893ca603aa64fee93.png" alt="CubeNet Logo">
+    </a>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#hero"><img src="images/I117_2493_117_1232.svg" alt="">Home</a></li>
+        <li><a href="#"><img src="images/I117_2530_117_1292.svg" alt="">Server status</a></li>
+        <li><a href="#"><img src="images/I117_2517_117_1272.svg" alt="">Support</a></li>
+        <li><a href="#"><img src="images/I117_2506_117_1252.svg" alt="">News</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-selector">
+        <img src="images/2b2c91e08a8545f215dd02451d552d7f491a10a6.png" alt="Language: EN">
+      </button>
+      <a href="#" class="btn-personal-area">
+        <img src="images/I117_2544_117_1312.svg" alt="">
+        <span>Personal area</span>
+      </a>
+    </div>
+  </div>
+</header>
+<section id="hero" class="hero-section">
+  <!--merged image-->
+  <div class="hero-background-blurs">
+    <img src="images/96_19.svg" alt="background blur" class="bg-blur-1">
+    <img src="images/91_16.svg" alt="background blur" class="bg-blur-2">
+  </div>
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Reliable hosting without limits</h1>
+      <p class="hero-subtitle">Hosting that grows with you</p>
+      <a href="#" class="btn-cta">
+        <span class="btn-cta-background"></span>
+        <span class="btn-cta-content">
+          <img src="images/a43f731a60fa2a9157ccd7aa433e051eb91b6305.png" alt="arrow icon">
+          Go to services
+        </span>
+      </a>
+    </div>
+    <div class="hero-image">
+      <img src="images/75b5d052777cda859cd243b249dbfdeebf8f471f.png" alt="Pagoda building illustration">
+    </div>
+  </div>
+</section>
+<section id="features" class="features-section">
+  <div class="container">
+    <h2 class="features-title">Why we?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3 class="feature-card-title">Easy Management</h3>
+        <p class="feature-card-description">With our user-friendly control panel, you can install mods, plugins, and manage your server effortlessly in just a few clicks.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card-title">Fast Servers</h3>
+        <p class="feature-card-description">We use the most modern high-frequency processors that guarantee maximum performance for your server.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card-title">Advanced DDoS Protection</h3>
+        <p class="feature-card-description">We provide enterprise-grade protection against attacks, keeping your Minecraft worlds safe and online 24/7.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card-title">24/7 Support</h3>
+        <p class="feature-card-description">Our team is always ready to help, whether it’s configuring plugins, troubleshooting issues, or optimizing your server.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card-title">Affordable Pricing</h3>
+        <p class="feature-card-description">Premium performance at fair prices — the perfect balance between quality and cost.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card-title">Minimal Ping</h3>
+        <p class="feature-card-description">Our nodes are located in Germany, which contributes to low ping and latency during gameplay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="configurator" class="configurator-section">
+  <!--merged image-->
+  <div class="configurator-background">
+    <img src="images/107_2.svg" alt="background blur" class="bg-blur-3">
+  </div>
+  <div class="container configurator-container">
+    <div class="config-group">
+      <button class="config-btn active">
+        <img src="images/6b8f1b99f9f342eecf4fda183a1a4f353155cbe1.png" alt="Germany flag">
+        <span>Germany</span>
+      </button>
+      <button class="config-btn" disabled>
+        <span>Soon</span>
+      </button>
+    </div>
+    <div class="config-group">
+      <button class="config-btn active">
+        <span>₽</span>
+      </button>
+      <button class="config-btn" disabled>
+        <span>€</span>
+      </button>
+    </div>
+  </div>
+</section>
+<footer id="footer" class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-info">
+      <p class="footer-copyright">© cubenet.su, 2024 - 2025</p>
+      <p class="footer-disclaimer">We are not affiliated with Minecraft®, Mojang Studios® or Microsoft® in any way.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-links-column">
+        <h4 class="footer-links-title">
+          <img src="images/bafd1738732c0a617a3233f9660b5b7312f3121d.png" alt="">
+          Documents
+        </h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-column">
+        <h4 class="footer-links-title">
+          <img src="images/2847e8682a146b65bdde73b9068dea694bf881b9.png" alt="">
+          Contacts
+        </h4>
+        <ul>
+          <li><a href="#">We are on telegram</a></li>
+          <li><a href="#">We are on discord</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
