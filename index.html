@@ -9,14 +9,15 @@
 <title>Reliable Hosting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&family=Neue+Machina:wght@400;500&family=Montserrat:wght@400;500&family=Onest:wght@500&display=swap" rel="stylesheet">
+<script src="global.js" defer></script>
+<script src="lang-switcher.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&family=Neue+Machina:wght@400;500;700&family=Montserrat:wght@400;500;600&family=Onest:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="global.css">
   <style id="sections-styles">
 /* CSS for section section:header */
 .site-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid #070707;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   background-color: var(--color-background);
@@ -26,41 +27,44 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
 }
-.header-logo img {
+.logo img {
+  width: 57px;
   height: 49px;
   opacity: 0.85;
 }
-.header-nav ul {
+.main-nav ul {
   display: flex;
   gap: 48px;
 }
-.header-nav a {
+.main-nav a {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 16px;
+  font-family: var(--font-onest);
   font-weight: 500;
-  color: var(--color-text-inactive);
-  transition: color 0.3s;
-}
-.header-nav a:hover, .header-nav li:first-child a {
-  color: var(--color-text-primary);
-}
-.header-nav a img {
+  font-size: 16px;
+  color: var(--color-text-light);
   opacity: 0.5;
+  transition: opacity 0.3s;
 }
-.header-nav li:first-child a img {
-    opacity: 1;
+.main-nav a:hover, .main-nav li:first-child a {
+  opacity: 1;
+}
+.main-nav li:first-child a {
+    color: var(--color-text-light);
+}
+.main-nav img {
+    width: 20px;
+    height: 20px;
 }
 .header-actions {
   display: flex;
   align-items: center;
   gap: 24px;
 }
-.lang-selector {
-  background-color: rgba(23, 23, 23, 0.5);
+.lang-switcher {
+  background: rgba(23, 23, 23, 0.5);
   border: none;
   border-radius: 8px;
   padding: 13px;
@@ -69,160 +73,201 @@
   align-items: center;
   justify-content: center;
 }
-.lang-selector img {
+.lang-switcher img {
   width: 20px;
   height: 20px;
 }
 .btn-personal-area {
+  background-color: var(--color-accent-bg);
+  border-radius: 8px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: rgba(125, 80, 255, 0.1);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
+  font-family: var(--font-onest);
   font-weight: 500;
+  font-size: 16px;
   color: var(--color-accent);
   transition: background-color 0.3s;
 }
 .btn-personal-area:hover {
   background-color: rgba(125, 80, 255, 0.2);
 }
+.btn-personal-area img {
+    width: 20px;
+    height: 20px;
+}
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 @media (max-width: 1024px) {
-  .header-nav {
-    display: none; /* Simple responsive solution: hide nav on smaller screens */
+  .main-nav {
+    display: none; /* Or implement a mobile menu */
   }
+  .mobile-nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .mobile-nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+  }
+}
+@media (max-width: 768px) {
+    .header-actions .btn-personal-area span {
+        display: none;
+    }
+    .header-actions .btn-personal-area {
+        padding: 12px;
+    }
+    .header-actions {
+        gap: 12px;
+    }
 }
 
 /* CSS for section section:hero */
-.hero-section {
+#hero {
+  padding: 165px 0 100px;
   position: relative;
-  padding: 120px 0;
   overflow: hidden;
 }
-.hero-background-blurs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-.bg-blur-1 {
-  position: absolute;
-  left: -20%;
-  top: 0;
-  width: 63%;
-  opacity: 0.99;
-  filter: blur(300px);
-}
-.bg-blur-2 {
-  position: absolute;
-  right: -15%;
-  top: -50%;
-  width: 63%;
-  opacity: 0.99;
-  filter: blur(300px);
-}
 .hero-container {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
 }
 .hero-content {
   flex: 1;
   max-width: 634px;
 }
 .hero-title {
-  font-family: var(--font-heading);
-  font-size: 64px;
+  color: #ffffff;
+  font-family: var(--font-unbounded);
   font-weight: 400;
+  font-size: 64px;
   line-height: 1.1;
   margin-bottom: 24px;
 }
 .hero-subtitle {
-  font-family: var(--font-heading);
-  font-size: 24px;
+  color: var(--color-text-dark-muted);
+  font-family: var(--font-unbounded);
   font-weight: 400;
-  color: rgba(78, 78, 78, 0.5);
-  margin-bottom: 40px;
+  font-size: 24px;
+  margin-bottom: 70px;
 }
-.btn-cta {
-  position: relative;
-  display: inline-block;
-  padding: 1px;
-  border-radius: 20px;
-  background-color: rgba(12, 12, 12, 0.7);
-}
-.btn-cta-background {
-  display: block;
-  width: 202px;
-  height: 35px;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+  padding: 8px 49px 8px 17px;
   border-radius: 20px;
   background: linear-gradient(90deg, #000000 0%, #0e0a16 48.08%, #220065 100%);
-}
-.btn-cta-content {
-  position: absolute;
-  top: 50%;
-  left: 18px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-heading);
-  font-size: 15px;
+  color: #ffffff;
+  font-family: var(--font-unbounded);
   font-weight: 400;
-  color: var(--color-text-primary);
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
 }
-.btn-cta-content img {
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: rgba(12, 12, 12, 0.7);
+  border-radius: 20px;
+  z-index: -1;
+}
+.btn-icon {
   width: 26px;
   height: 26px;
 }
-.hero-image {
+.hero-image-wrapper {
   flex-shrink: 0;
+  margin-right: -150px;
 }
-.hero-image img {
+.hero-image {
+  width: 612px;
+}
+.hero-background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 612px;
-  display: block;
+  height: 100%;
+  z-index: 0;
 }
-@media (max-width: 1024px) {
+.hero-background-elements img {
+  position: absolute;
+  opacity: 0.99;
+  filter: blur(621.8px);
+}
+.bg-ellipse-1 {
+  width: 913px;
+  height: 1208px;
+  top: -300px;
+  left: 20%;
+}
+.bg-ellipse-2 {
+  width: 913px;
+  height: 1208px;
+  top: 100px;
+  left: -10%;
+}
+
+@media (max-width: 1200px) {
+  .hero-image-wrapper {
+    margin-right: 0;
+  }
+  .hero-image {
+    width: 500px;
+  }
+}
+@media (max-width: 992px) {
+  #hero {
+    padding: 80px 0;
+  }
   .hero-container {
     flex-direction: column;
     text-align: center;
   }
-  .hero-content {
-    order: 2;
+  .hero-image-wrapper {
+    order: -1;
+    margin-bottom: 40px;
   }
   .hero-image {
-    order: 1;
-    margin-bottom: 40px;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   .hero-title {
     font-size: 48px;
   }
   .hero-subtitle {
     font-size: 20px;
+    margin-bottom: 40px;
   }
 }
 
 /* CSS for section section:features */
-.features-section {
+#features {
   padding: 100px 0;
 }
-.features-title {
-  font-family: var(--font-heading);
-  font-size: 64px;
-  font-weight: 400;
-  margin-bottom: 80px;
+.section-title .lowercase {
+  text-transform: lowercase;
 }
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 20px;
 }
 .feature-card {
   border: 1px solid var(--color-border);
@@ -232,315 +277,616 @@
   flex-direction: column;
   gap: 17px;
 }
-.feature-card-title {
-  font-family: var(--font-body);
-  font-size: 24px;
+.feature-card h3 {
+  color: var(--color-text-primary);
+  font-family: var(--font-montserrat);
   font-weight: 500;
+  font-size: 24px;
+}
+.feature-card p {
   color: var(--color-text-secondary);
-}
-.feature-card-description {
-  font-family: var(--font-body);
-  font-size: 16px;
+  font-family: var(--font-montserrat);
   font-weight: 400;
-  line-height: 1.9;
-  color: var(--color-text-tertiary);
+  font-size: 16px;
+  line-height: 31px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .features-title {
-    font-size: 48px;
-    text-align: center;
-  }
 }
 @media (max-width: 768px) {
+  #features {
+    padding: 60px 0;
+  }
   .features-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* CSS for section section:configurator */
-.configurator-section {
-  position: relative;
-  padding: 150px 0;
-  overflow: hidden;
+/* CSS for section section:supported-services */
+#supported-services {
+  padding: 100px 0;
 }
-.configurator-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
+.supported-services-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
 }
-.bg-blur-3 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 63%;
-  opacity: 0.99;
-  filter: blur(300px);
+.supported-services-info {
+  flex: 1;
 }
-.configurator-container {
-  position: relative;
+.section-title-large {
+  color: var(--color-text-primary);
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.3;
+}
+.service-cards-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 32px;
+  gap: 20px;
 }
-.config-group {
+.service-card {
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 14px 27px;
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+.service-card img {
+  width: 49px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.service-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.service-card-text h3 {
+  color: var(--color-text-primary);
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 24px;
+}
+.service-sublist {
+  display: flex;
+  gap: 10px;
+}
+.service-sublist.two-cols {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 6px 10px;
+    justify-content: start;
+}
+.service-sublist li {
+  color: var(--color-text-secondary);
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-size: 16px;
+}
+@media (max-width: 992px) {
+  .supported-services-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .section-title-large {
+    font-size: 48px;
+  }
+}
+@media (max-width: 768px) {
+  #supported-services {
+    padding: 60px 0;
+  }
+}
+
+/* CSS for section section:pricing */
+#pricing {
+  padding: 100px 0;
+}
+.pricing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.section-title-alt {
+  color: #f4f4f5;
+  font-family: var(--font-neue-machina);
+  font-weight: 700;
+  font-size: 60px;
+}
+.pricing-controls {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.location-selector, .currency-selector {
   background-color: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  padding: 16px 32px;
+  padding: 16px;
   display: flex;
   gap: 16px;
 }
-.config-btn {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 16px 28px;
-  font-family: var(--font-special);
-  font-size: 20px;
-  font-weight: 500;
+.btn-location, .btn-currency {
+  border: none;
+  background-color: transparent;
   color: var(--color-text-primary);
+  font-family: var(--font-neue-machina);
+  font-weight: 500;
+  font-size: 20px;
+  padding: 16px 28px;
+  border-radius: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: background-color 0.3s;
-}
-.config-btn:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-.config-btn:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
+  transition: all 0.3s;
 }
-.config-btn img {
+.btn-currency {
+  padding: 16px 28px;
+}
+.btn-location.active, .btn-currency.active {
+  background-color: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+}
+.btn-location img {
   width: 20px;
   height: 20px;
 }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.pricing-card {
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 17px;
+}
+.pricing-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.plan-name {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 24px;
+}
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.plan-price img {
+  width: 10px;
+  height: 17px;
+}
+.plan-price span {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 34px;
+}
+.plan-features {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 30px 0;
+}
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+.plan-features li img {
+  width: 15px;
+  height: 15px;
+}
+.plan-features li span {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+.btn-secondary {
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 5px;
+  padding: 5px 12px;
+  text-align: center;
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  color: var(--color-text-primary);
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+.btn-secondary:hover {
+  background-color: var(--color-text-secondary);
+  color: var(--color-background);
+}
+@media (max-width: 992px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 768px) {
+  #pricing {
+    padding: 60px 0;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-title-alt {
+    font-size: 48px;
+  }
+}
 
 /* CSS for section section:footer */
-.site-footer {
+#footer {
+  border-top: 1px solid #070707;
   padding: 30px 0;
-  border-top: 1px solid var(--color-border-light);
 }
 .footer-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 40px;
 }
-.footer-info {
-  max-width: 692px;
+.footer-column {
+  display: flex;
+  flex-direction: column;
 }
-.footer-copyright {
-  font-family: var(--font-special);
+.footer-info {
+  gap: 10px;
+  max-width: 450px;
+}
+.copyright {
+  font-family: var(--font-neue-machina);
   font-size: 20px;
   color: var(--color-text-muted);
-  margin-bottom: 10px;
 }
-.footer-disclaimer {
-  font-family: var(--font-heading);
-  font-size: 18px;
+.disclaimer {
+  font-family: var(--font-unbounded);
   font-weight: 300;
+  font-size: 18px;
   color: var(--color-text-muted);
   line-height: 1.4;
 }
-.footer-links {
-  display: flex;
-  gap: 60px;
-}
-.footer-links-column {
-  display: flex;
-  flex-direction: column;
-}
-.footer-links-title {
-  font-family: var(--font-heading);
-  font-size: 24px;
+.footer-links h3, .footer-contacts h3 {
+  font-family: var(--font-unbounded);
   font-weight: 300;
+  font-size: 24px;
   color: var(--color-text-muted);
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 17px;
 }
-.footer-links-title img {
+.footer-links h3 img, .footer-contacts h3 img {
   width: 21px;
   height: 21px;
 }
-.footer-links-column ul {
+.footer-contacts h3 img {
+    width: 36px;
+    height: 36px;
+}
+.footer-links ul, .footer-contacts ul {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
-.footer-links-column a {
-  font-family: var(--font-heading);
-  font-size: 13px;
+.footer-links a, .footer-contacts a {
+  font-family: var(--font-unbounded);
   font-weight: 300;
+  font-size: 13px;
   color: var(--color-text-muted);
   transition: color 0.3s;
 }
-.footer-links-column a:hover {
+.footer-links a:hover, .footer-contacts a:hover {
   color: var(--color-text-primary);
 }
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
-    gap: 40px;
-  }
-  .footer-links {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-@media (max-width: 480px) {
-  .footer-links {
-    flex-direction: column;
-    gap: 30px;
+    align-items: flex-start;
   }
 }
   </style>
   <script src="global.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
-    <a href="#hero" class="header-logo">
-      <img src="images/a80dda3f8d91d2808236dc9893ca603aa64fee93.png" alt="CubeNet Logo">
-    </a>
-    <nav class="header-nav">
-      <ul>
-        <li><a href="#hero"><img src="images/I117_2493_117_1232.svg" alt="">Home</a></li>
-        <li><a href="#"><img src="images/I117_2530_117_1292.svg" alt="">Server status</a></li>
-        <li><a href="#"><img src="images/I117_2517_117_1272.svg" alt="">Support</a></li>
-        <li><a href="#"><img src="images/I117_2506_117_1252.svg" alt="">News</a></li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-      <button class="lang-selector">
-        <img src="images/2b2c91e08a8545f215dd02451d552d7f491a10a6.png" alt="Language: EN">
-      </button>
-      <a href="#" class="btn-personal-area">
-        <img src="images/I117_2544_117_1312.svg" alt="">
-        <span>Personal area</span>
+<section id="header">
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img src="images/a80dda3f8d91d2808236dc9893ca603aa64fee93.png" alt="CubeNet">
       </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#"><img src="images/home.svg" alt="">Home</a></li>
+          <li><a href="https://status.cubenet.su"><img src="images/server.svg" alt="">Server status</a></li>
+          <li><a href="https://discord.gg/FtNFfB8YxH"><img src="images/headphones.svg" alt="">Support</a></li>
+          <li><a href="https://t.me/cubenet_su"><img src="images/book.svg" alt="">News</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-switcher">
+          <img src="images/2b2c91e08a8545f215dd02451d552d7f491a10a6.png" alt="Language">
+        </button>
+        <a href="https://my.cubenet.su" class="btn-personal-area">
+          <img src="images/login.svg" alt="">
+          <span>Personal area</span>
+        </a>
+      </div>
+      <button class="mobile-nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-  </div>
-</header>
-<section id="hero" class="hero-section">
-  <!--merged image-->
-  <div class="hero-background-blurs">
-    <img src="images/96_19.svg" alt="background blur" class="bg-blur-1">
-    <img src="images/91_16.svg" alt="background blur" class="bg-blur-2">
-  </div>
+  </header>
+</section>
+<section id="hero">
   <div class="container hero-container">
     <div class="hero-content">
       <h1 class="hero-title">Reliable hosting without limits</h1>
       <p class="hero-subtitle">Hosting that grows with you</p>
-      <a href="#" class="btn-cta">
-        <span class="btn-cta-background"></span>
-        <span class="btn-cta-content">
-          <img src="images/a43f731a60fa2a9157ccd7aa433e051eb91b6305.png" alt="arrow icon">
-          Go to services
-        </span>
+      <a href="#pricing" class="btn btn-primary">
+        <img src="images/a43f731a60fa2a9157ccd7aa433e051eb91b6305.png" alt="" class="btn-icon">
+        Go to services
       </a>
     </div>
-    <div class="hero-image">
-      <img src="images/75b5d052777cda859cd243b249dbfdeebf8f471f.png" alt="Pagoda building illustration">
+    <div class="hero-image-wrapper">
+      <img src="images/75b5d052777cda859cd243b249dbfdeebf8f471f.png" alt="Pagoda illustration" class="hero-image">
     </div>
   </div>
+  <!--merged image-->
+  <div class="hero-background-elements">
+    <img src="images/161_381.svg" alt="" class="bg-ellipse-1">
+    <img src="images/96_19.svg" alt="" class="bg-ellipse-2">
+  </div>
 </section>
-<section id="features" class="features-section">
+<section id="features">
   <div class="container">
-    <h2 class="features-title">Why we?</h2>
+    <h2 class="section-title">Why w<span class="lowercase">e</span>?</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <h3 class="feature-card-title">Easy Management</h3>
-        <p class="feature-card-description">With our user-friendly control panel, you can install mods, plugins, and manage your server effortlessly in just a few clicks.</p>
+        <h3>Easy Management</h3>
+        <p>With our user-friendly control panel, you can install mods, plugins, and manage your server effortlessly in just a few clicks.</p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-card-title">Fast Servers</h3>
-        <p class="feature-card-description">We use the most modern high-frequency processors that guarantee maximum performance for your server.</p>
+        <h3>Fast Servers</h3>
+        <p>We use the most modern high-frequency processors that guarantee maximum performance for your server.</p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-card-title">Advanced DDoS Protection</h3>
-        <p class="feature-card-description">We provide enterprise-grade protection against attacks, keeping your Minecraft worlds safe and online 24/7.</p>
+        <h3>Advanced DDoS Protection</h3>
+        <p>We provide enterprise-grade protection against attacks, keeping your Minecraft worlds safe and online 24/7.</p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-card-title">24/7 Support</h3>
-        <p class="feature-card-description">Our team is always ready to help, whether it’s configuring plugins, troubleshooting issues, or optimizing your server.</p>
+        <h3>24/7 Support</h3>
+        <p>Our team is always ready to help, whether it’s configuring plugins, troubleshooting issues, or optimizing your server.</p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-card-title">Affordable Pricing</h3>
-        <p class="feature-card-description">Premium performance at fair prices — the perfect balance between quality and cost.</p>
+        <h3>Affordable Pricing</h3>
+        <p>Premium performance at fair prices — the perfect balance between quality and cost.</p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-card-title">Minimal Ping</h3>
-        <p class="feature-card-description">Our nodes are located in Germany, which contributes to low ping and latency during gameplay.</p>
+        <h3>Minimal Ping</h3>
+        <p>Our nodes are located in Germany, which contributes to low ping and latency during gameplay.</p>
       </div>
     </div>
   </div>
 </section>
-<section id="configurator" class="configurator-section">
-  <!--merged image-->
-  <div class="configurator-background">
-    <img src="images/107_2.svg" alt="background blur" class="bg-blur-3">
-  </div>
-  <div class="container configurator-container">
-    <div class="config-group">
-      <button class="config-btn active">
-        <img src="images/6b8f1b99f9f342eecf4fda183a1a4f353155cbe1.png" alt="Germany flag">
-        <span>Germany</span>
-      </button>
-      <button class="config-btn" disabled>
-        <span>Soon</span>
-      </button>
+<section id="supported-services">
+  <div class="container supported-services-container">
+    <div class="supported-services-info">
+      <h2 class="section-title-large">Supported services</h2>
+      <p class="section-subtitle">In the future, we plan to expand this list</p>
     </div>
-    <div class="config-group">
-      <button class="config-btn active">
-        <span>₽</span>
-      </button>
-      <button class="config-btn" disabled>
-        <span>€</span>
-      </button>
+    <div class="service-cards-list">
+      <div class="service-card">
+        <img src="images/ec986d9f4d5ddddbefdb8fc320218b631118d856.png" alt="Node.js logo">
+        <div class="service-card-text">
+          <h3>Node.js</h3>
+          <ul class="service-sublist">
+            <li>Discord bot</li>
+            <li>Telegram bot</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="images/1c3ddc6ceb317480bbfb001c5b985a0fb79e98f7.png" alt="Minecraft logo">
+        <div class="service-card-text">
+          <h3>Minecraft</h3>
+          <ul class="service-sublist two-cols">
+            <li>Vanilla</li>
+            <li>Spigot</li>
+            <li>Sponge</li>
+            <li>Forge</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="images/243b88f61798e84ebb21e8d3cd67ce39d7d8a283.png" alt="Python logo">
+        <div class="service-card-text">
+          <h3>Python</h3>
+          <ul class="service-sublist">
+            <li>Discord bot</li>
+            <li>Telegram bot</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<footer id="footer" class="site-footer">
-  <div class="container footer-container">
-    <div class="footer-info">
-      <p class="footer-copyright">© cubenet.su, 2024 - 2025</p>
-      <p class="footer-disclaimer">We are not affiliated with Minecraft®, Mojang Studios® or Microsoft® in any way.</p>
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <h2 class="section-title-alt">Our services</h2>
+      <div class="pricing-controls">
+        <div class="location-selector">
+          <button class="btn-location active">
+            <img src="images/6b8f1b99f9f342eecf4fda183a1a4f353155cbe1.png" alt="Germany flag">
+            Germany
+          </button>
+          <button class="btn-location">Soon</button>
+        </div>
+        <div class="currency-selector">
+          <button class="btn-currency">₽</button>
+          <button class="btn-currency active">€</button>
+        </div>
+      </div>
     </div>
-    <div class="footer-links">
-      <div class="footer-links-column">
-        <h4 class="footer-links-title">
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_97_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_97_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_97_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_97_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_481_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_481_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_481_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_481_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_524_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_524_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_524_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_524_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_567_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_567_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_567_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_567_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_569_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_569_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_569_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_569_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">
+            <img src="images/I113_568_113_83.svg" alt="currency symbol">
+            <span>0</span>
+          </p>
+        </div>
+        <ul class="plan-features">
+          <li><img src="images/I113_568_113_86_12_119.svg" alt="check icon"> 0% cpu</li>
+          <li><img src="images/I113_568_113_87_12_119.svg" alt="check icon"> 0mb ram</li>
+          <li><img src="images/I113_568_113_88_12_119.svg" alt="check icon"> 0gb ssd</li>
+        </ul>
+        <ul><li><a href="https://my.cubenet.su" class="btn btn-secondary">Buy</a></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="footer">
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-column footer-info">
+        <p class="copyright">© cubenet.su, 2024 - 2025</p>
+        <p class="disclaimer">We are not affiliated with Minecraft®, Mojang Studios® or Microsoft® in any way.</p>
+      </div>
+      <div class="footer-column footer-links">
+        <h3>
           <img src="images/bafd1738732c0a617a3233f9660b5b7312f3121d.png" alt="">
           Documents
-        </h4>
+        </h3>
         <ul>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms of Service</a></li>
         </ul>
       </div>
-      <div class="footer-links-column">
-        <h4 class="footer-links-title">
+      <div class="footer-column footer-contacts">
+        <h3>
           <img src="images/2847e8682a146b65bdde73b9068dea694bf881b9.png" alt="">
           Contacts
-        </h4>
+        </h3>
         <ul>
-          <li><a href="#">We are on telegram</a></li>
-          <li><a href="#">We are on discord</a></li>
+          <li><a href="https://t.me/cubenet_su">We are on telegram</a></li>
+          <li><a href="https://discord.gg/FtNFfB8YxH">We are on discord</a></li>
         </ul>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</section>
 </body>
 </html>
