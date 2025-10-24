@@ -1,41 +1,43 @@
 :root {
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #e0e0e0;
-  --color-text-tertiary: #999999;
-  --color-text-muted: #5e5e5e;
-  --color-text-inactive: rgba(250, 250, 250, 0.5);
-  --color-accent: #8b62ff;
   --color-background: #000000;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #999999;
+  --color-text-light: #fafafa;
+  --color-text-muted: #5e5e5e;
+  --color-text-dark-muted: rgba(78, 78, 78, 0.5);
   --color-border: #2b2b2b;
-  --color-border-light: #070707;
+  --color-accent: #8b62ff;
+  --color-accent-bg: rgba(125, 80, 255, 0.1);
+  --font-unbounded: 'Unbounded', sans-serif;
+  --font-neue-machina: 'Neue Machina', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-onest: 'Onest', sans-serif;
+}
 
-  --font-heading: 'Unbounded', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
-  --font-ui: 'Onest', sans-serif;
-  --font-special: 'Neue Machina', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   background-color: var(--color-background);
   color: var(--color-text-primary);
-  font-family: var(--font-ui);
+  font-family: var(--font-montserrat);
   overflow-x: hidden;
 }
 
 .page-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
   position: relative;
-  width: 100%;
 }
 
 .container {
   width: 100%;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 80px;
-  padding-right: 80px;
-  box-sizing: border-box;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 a {
@@ -45,24 +47,26 @@ a {
 
 ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-@media (max-width: 1024px) {
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+.section-title {
+  color: #ffffff;
+  font-family: var(--font-unbounded);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 70px;
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
+  .section-title {
+    font-size: 48px;
+    margin-bottom: 40px;
   }
 }
